@@ -40,6 +40,14 @@ public class Ambiente {
         this.tamanho = tamanho;
     }
 
+    public List<List<Espaco>> getEcossistema() {
+        return ecossistema;
+    }
+
+    public void setEcossistema(List<List<Espaco>> ecossistema) {
+        this.ecossistema = ecossistema;
+    }
+
     @Override
     public String toString() {
         String ecoString = "";

@@ -33,6 +33,14 @@ public class Espaco {
         this.organismo = organismo;
     }
 
+    public Point getCoordenadas() {
+        return coordenadas;
+    }
+
+    public void setCoordenadas(Point coordenadas) {
+        this.coordenadas = coordenadas;
+    }
+
     @Override
     public String toString() {
         return coordenadas.x + " " + coordenadas.y;
