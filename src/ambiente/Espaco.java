@@ -31,6 +31,7 @@ public class Espaco {
 
     public void setOrganismo(Organismo organismo) {
         this.organismo = organismo;
+        organismo.setEspaco(this);
     }
 
     public Point getCoordenadas() {

@@ -1,7 +1,10 @@
 package organismos;
 
 import ambiente.Espaco;
-import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
+import utils.ConstantesGerais;
+import utils.MathUtils;
 
 /**
  *
@@ -10,7 +13,8 @@ import java.awt.Point;
 public class Organismo {
 
     private String identificacao;
-    private Integer campoVisao;
+    private Integer distanciaMovimento;
+    private List<Espaco> movimentosDisponiveis = new ArrayList<>();
     private Espaco espaco;
 
     public Organismo(Espaco espaco) {
@@ -24,12 +28,24 @@ public class Organismo {
 
     public Organismo(Espaco espaco, String identificacao, Integer campoVisao) {
         this(espaco, identificacao);
-        this.campoVisao = campoVisao;
+        this.distanciaMovimento = campoVisao;
     }
 
-    public Point mover() {
-        
-        return new Point();
+    public void iterar() {
+        mover();
+    }
+
+    public void mover() {
+        double chance = Math.random();
+
+        if (chance <= ConstantesGerais.CHANCE_DE_MOVIMENTO) {
+            int indice = MathUtils.InteiroAleatorioEntre(0, movimentosDisponiveis.size());
+            Espaco movimento = movimentosDisponiveis.get(indice);
+
+            // leblanc disse = deixar pra dps = n fazer :)
+            espaco.setOrganismo(null);
+            movimento.setOrganismo(this);
+        }
     }
 
     public String getIdentificacao() {
@@ -38,6 +54,30 @@ public class Organismo {
 
     public void setIdentificacao(String identificacao) {
         this.identificacao = identificacao;
+    }
+
+    public Integer getDistanciaMovimento() {
+        return distanciaMovimento;
+    }
+
+    public void setDistanciaMovimento(Integer distanciaMovimento) {
+        this.distanciaMovimento = distanciaMovimento;
+    }
+
+    public Espaco getEspaco() {
+        return espaco;
+    }
+
+    public void setEspaco(Espaco espaco) {
+        this.espaco = espaco;
+    }
+
+    public List<Espaco> getMovimentosDisponiveis() {
+        return movimentosDisponiveis;
+    }
+
+    public void setMovimentosDisponiveis(List<Espaco> movimentosDisponiveis) {
+        this.movimentosDisponiveis = movimentosDisponiveis;
     }
 
 }

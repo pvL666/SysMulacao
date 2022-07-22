@@ -1,6 +1,7 @@
 package ambiente;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,7 @@ public class Ambiente {
 
     private Dimension tamanho;
     private List<List<Espaco>> ecossistema = new ArrayList<List<Espaco>>();
+    private List<Organismo> organismos = new ArrayList<>();
 
     public Ambiente() {
     }
@@ -23,6 +25,13 @@ public class Ambiente {
         tamanho = new Dimension(largura, altura);
 
         preencherEcossistema();
+    }
+
+    private void iterar() {
+        for (Organismo organismo : organismos) {
+            atualizaCasaOrganismo(organismo);
+            organismo.iterar();
+        }
     }
 
     private void preencherEcossistema() {
@@ -38,12 +47,43 @@ public class Ambiente {
 
     private void preencherEspaco(Espaco espaco) {
         double chance = Math.random();
-        
-        if (chance < ConstantesGerais.CHANCE_NASCER_ORGANISMO) {
+
+        if (chance <= ConstantesGerais.CHANCE_NASCER_ORGANISMO) {
             espaco.setOrganismo(new Organismo(espaco, Double.toString(chance)));
+            adicionarOrganismo(espaco);
         }
     }
+
+    private void adicionarOrganismo(Espaco espaco) {
+        if (!espaco.isVazio()) {
+            this.organismos.add(espaco.getOrganismo());
+        }
+    }
+
+    private void atualizaCasaOrganismo(Organismo organismo) {
+        int organismoX = organismo.getEspaco().getCoordenadas().x;
+        int organismoY = organismo.getEspaco().getCoordenadas().y;
+
+        int distancia = organismo.getDistanciaMovimento();
+
+        List<Espaco> movimentosDisponiveis = new ArrayList<>();
+
+        for (int x = organismoX - distancia; x < organismoX + distancia; x++) {
+            for (int y = organismoY - distancia; y < organismoY + distancia; y++) {
+                if (!isCoordenadaForaDoAmbiente(new Point(x, y))) {
+                    movimentosDisponiveis.add(ecossistema.get(x).get(y));
+                }
+            }
+        }
+
+        organismo.setMovimentosDisponiveis(movimentosDisponiveis);
+    }
     
+    private boolean isCoordenadaForaDoAmbiente(Point coordenada) {
+        return coordenada.x < 0 || coordenada.x > tamanho.width
+                || coordenada.y < 0 || coordenada.y > tamanho.height;
+    }
+
     public Dimension getTamanho() {
         return tamanho;
     }
