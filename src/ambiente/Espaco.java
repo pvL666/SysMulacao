@@ -41,6 +41,10 @@ public class Espaco {
         this.coordenadas = coordenadas;
     }
 
+    public boolean isVazio() {
+        return organismo == null;
+    }
+    
     @Override
     public String toString() {
         return coordenadas.x + " " + coordenadas.y;
