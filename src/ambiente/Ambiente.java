@@ -68,8 +68,8 @@ public class Ambiente {
 
         List<Espaco> movimentosDisponiveis = new ArrayList<>();
 
-        for (int x = organismoX - distancia; x < organismoX + distancia; x++) {
-            for (int y = organismoY - distancia; y < organismoY + distancia; y++) {
+        for (int x = organismoX - distancia; x <= organismoX + distancia; x++) {
+            for (int y = organismoY - distancia; y <= organismoY + distancia; y++) {
                 if (!isCoordenadaForaDoAmbiente(new Point(x, y))) {
                     movimentosDisponiveis.add(ecossistema.get(x).get(y));
                 }
@@ -78,10 +78,10 @@ public class Ambiente {
 
         organismo.setMovimentosDisponiveis(movimentosDisponiveis);
     }
-    
+
     private boolean isCoordenadaForaDoAmbiente(Point coordenada) {
-        return coordenada.x < 0 || coordenada.x > tamanho.width
-                || coordenada.y < 0 || coordenada.y > tamanho.height;
+        return coordenada.x < 0 || coordenada.x >= tamanho.width
+                || coordenada.y < 0 || coordenada.y >= tamanho.height;
     }
 
     public Dimension getTamanho() {
