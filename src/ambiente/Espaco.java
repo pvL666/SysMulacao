@@ -25,6 +25,10 @@ public class Espaco {
         this.organismo = organismo;
     }
 
+    public void limpar() {
+        this.organismo = null;
+    }
+    
     public Organismo getOrganismo() {
         return organismo;
     }

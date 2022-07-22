@@ -27,7 +27,7 @@ public class Ambiente {
         preencherEcossistema();
     }
 
-    private void iterar() {
+    public void iterar() {
         for (Organismo organismo : organismos) {
             atualizaCasaOrganismo(organismo);
             organismo.iterar();
@@ -49,7 +49,7 @@ public class Ambiente {
         double chance = Math.random();
 
         if (chance <= ConstantesGerais.CHANCE_NASCER_ORGANISMO) {
-            espaco.setOrganismo(new Organismo(espaco, Double.toString(chance)));
+            espaco.setOrganismo(new Organismo(espaco, Double.toString(chance), 1));
             adicionarOrganismo(espaco);
         }
     }

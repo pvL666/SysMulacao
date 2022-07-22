@@ -6,6 +6,6 @@ public class MathUtils {
     }
     
     public static int InteiroAleatorioEntre(int minimo, int maximo) {
-        return (int) ((Math.random() * (maximo - minimo)) + maximo);
+        return (int) ((Math.random() * (maximo - minimo)) + minimo);
     }
 }

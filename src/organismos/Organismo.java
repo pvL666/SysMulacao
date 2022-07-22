@@ -26,9 +26,9 @@ public class Organismo {
         this.identificacao = identificacao;
     }
 
-    public Organismo(Espaco espaco, String identificacao, Integer campoVisao) {
+    public Organismo(Espaco espaco, String identificacao, Integer distanciaMovimento) {
         this(espaco, identificacao);
-        this.distanciaMovimento = campoVisao;
+        this.distanciaMovimento = distanciaMovimento;
     }
 
     public void iterar() {
@@ -43,7 +43,7 @@ public class Organismo {
             Espaco movimento = movimentosDisponiveis.get(indice);
 
             // leblanc disse = deixar pra dps = n fazer :)
-            espaco.setOrganismo(null);
+            espaco.limpar();
             movimento.setOrganismo(this);
         }
     }
