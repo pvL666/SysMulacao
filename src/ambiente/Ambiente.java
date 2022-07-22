@@ -40,7 +40,7 @@ public class Ambiente {
         double chance = Math.random();
         
         if (chance < ConstantesGerais.CHANCE_NASCER_ORGANISMO) {
-            espaco.setOrganismo(new Organismo(Double.toString(chance)));
+            espaco.setOrganismo(new Organismo(espaco, Double.toString(chance)));
         }
     }
     

@@ -13,22 +13,18 @@ public class Organismo {
     private Integer campoVisao;
     private Espaco espaco;
 
-    public Organismo() {
-    }
-
-    public Organismo(String identificacao) {
-        this.identificacao = identificacao;
-    }
-
-    public Organismo(String identificacao, Integer campoVisao) {
-        this.identificacao = identificacao;
-        this.campoVisao = campoVisao;
-    }
-
-    public Organismo(String identificacao, Integer campoVisao, Espaco espaco) {
-        this.identificacao = identificacao;
-        this.campoVisao = campoVisao;
+    public Organismo(Espaco espaco) {
         this.espaco = espaco;
+    }
+
+    public Organismo(Espaco espaco, String identificacao) {
+        this(espaco);
+        this.identificacao = identificacao;
+    }
+
+    public Organismo(Espaco espaco, String identificacao, Integer campoVisao) {
+        this(espaco, identificacao);
+        this.campoVisao = campoVisao;
     }
 
     public Point mover() {
