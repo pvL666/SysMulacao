@@ -70,9 +70,17 @@ public class Ambiente {
 
         for (int x = organismoX - distancia; x <= organismoX + distancia; x++) {
             for (int y = organismoY - distancia; y <= organismoY + distancia; y++) {
-                if (!isCoordenadaForaDoAmbiente(new Point(x, y))) {
-                    movimentosDisponiveis.add(ecossistema.get(x).get(y));
+                if (isCoordenadaForaDoAmbiente(new Point(x, y))) {
+                    continue;
                 }
+                
+                Espaco espaco = ecossistema.get(x).get(y);
+                
+                if (!espaco.isVazio() || espaco.equals(organismo.getEspaco())) {
+                    continue;
+                }
+                
+                movimentosDisponiveis.add(espaco);
             }
         }
 
@@ -104,6 +112,11 @@ public class Ambiente {
     public String toString() {
         String ecoString = "";
 
+        ecoString = ecoString.concat("\n".repeat(1000));
+        ecoString = ecoString.concat("|");
+        ecoString = ecoString.concat(ConstantesGerais.STRING_SEPARADOR.repeat(tamanho.height));
+        ecoString = ecoString.concat("|\n");
+                
         for (List<Espaco> ecossistema : this.ecossistema) {
             ecoString = ecoString.concat("|");
 
@@ -118,6 +131,13 @@ public class Ambiente {
             ecoString = ecoString.concat("| \n");
         }
 
+        ecoString = ecoString.concat("|");
+        ecoString = ecoString.concat(ConstantesGerais.STRING_SEPARADOR.repeat(tamanho.height));
+        ecoString = ecoString.concat("|\n");
+        
+        ecoString = ecoString.concat("Organismos vivos: " + organismos.size());
+        ecoString = ecoString.concat("\n".repeat(20));
+        
         return ecoString;
     }
 
