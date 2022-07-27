@@ -1,6 +1,6 @@
 package utils;
 
-public class MathUtils {
+public abstract class MathUtils {
     public static int InteiroAleatorio(int maximo) {
         return InteiroAleatorioEntre(0, maximo);
     }

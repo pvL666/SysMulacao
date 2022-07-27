@@ -111,8 +111,7 @@ public class Ambiente {
     @Override
     public String toString() {
         String ecoString = "";
-
-        ecoString = ecoString.concat("\n".repeat(1000));
+        
         ecoString = ecoString.concat("|");
         ecoString = ecoString.concat(ConstantesGerais.STRING_SEPARADOR.repeat(tamanho.height));
         ecoString = ecoString.concat("|\n");
@@ -136,7 +135,6 @@ public class Ambiente {
         ecoString = ecoString.concat("|\n");
         
         ecoString = ecoString.concat("Organismos vivos: " + organismos.size());
-        ecoString = ecoString.concat("\n".repeat(20));
         
         return ecoString;
     }
