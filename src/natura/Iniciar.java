@@ -20,7 +20,7 @@ public class Iniciar {
             public void run() {
                 while (true) {
                     try {
-                        System.out.println(ambiente.toString());
+                        // System.out.println(ambiente.toString());
                         frameNatura.repaint();
                         ambiente.iterar();
                         sleep(ConstantesGerais.MILISEGUNDOS_ENTRE_ITERACOES);

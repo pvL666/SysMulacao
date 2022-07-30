@@ -15,7 +15,7 @@ import utils.ConstantesGerais;
 public class Ambiente {
 
     private Dimension tamanho;
-    private List<List<Espaco>> ecossistema = new ArrayList<List<Espaco>>();
+    private List<List<Espaco>> ecossistema = new ArrayList<>();
     private List<Organismo> organismos = new ArrayList<>();
 
     public Ambiente() {
@@ -108,6 +108,10 @@ public class Ambiente {
         this.ecossistema = ecossistema;
     }
 
+    public Espaco getEspacoNaCoordenada(int x, int y) {
+        return ecossistema.get(x).get(y);
+    }
+    
     @Override
     public String toString() {
         String ecoString = "";
