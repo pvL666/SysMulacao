@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Objects;
 import organismos.Organismo;
 import utils.ConstantesGerais;
+import utils.SorteadorIdentificacao;
 
 /**
  *
@@ -49,7 +50,7 @@ public class Ambiente {
         double chance = Math.random();
 
         if (chance <= ConstantesGerais.CHANCE_NASCER_ORGANISMO) {
-            espaco.setOrganismo(new Organismo(espaco, Double.toString(chance), 1));
+            espaco.setOrganismo(new Organismo(espaco, SorteadorIdentificacao.sortearNome(), 1));
             adicionarOrganismo(espaco);
         }
     }
