@@ -21,6 +21,7 @@ public class PanelAmbiente extends JPanel {
     private Organismo organismoSelecionado;
     
     private final static Color COR_PLANO_DE_FUNDO = Color.BLACK;
+    private final static Color COR_INFORMACOES_ORGANISMO = Color.WHITE;
     private final static Font FONTE_INFORMACOES_ORGANISMO = new Font("Segoe UI", Font.BOLD, 18);
     private final int LARGURA_TELA, ALTURA_TELA;
     private final int LARGURA_ESPACO, ALTURA_ESPACO;
@@ -75,7 +76,7 @@ public class PanelAmbiente extends JPanel {
                 int xOrganismo = posicaoOrganismo.x * LARGURA_ESPACO;
                 int yOrganismo = posicaoOrganismo.y * ALTURA_ESPACO;
                 
-                graphics.setColor(new Color(255, 255, 255));
+                graphics.setColor(organismo.getCor());
                 graphics.fillOval(xOrganismo, yOrganismo, LARGURA_ESPACO, ALTURA_ESPACO);
             }
         }
@@ -86,6 +87,7 @@ public class PanelAmbiente extends JPanel {
             return;
         }
         
+        graphics.setColor(COR_INFORMACOES_ORGANISMO);
         graphics.setFont(FONTE_INFORMACOES_ORGANISMO);
         graphics.drawString(organismoSelecionado.getIdentificacao(), 10, 20);
     }

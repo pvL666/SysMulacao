@@ -8,6 +8,7 @@ import java.util.Objects;
 import organismos.Organismo;
 import utils.ConstantesGerais;
 import utils.SorteadorIdentificacao;
+import utils.VisualizacaoUtils;
 
 /**
  *
@@ -50,7 +51,7 @@ public class Ambiente {
         double chance = Math.random();
 
         if (chance <= ConstantesGerais.CHANCE_NASCER_ORGANISMO) {
-            espaco.setOrganismo(new Organismo(espaco, SorteadorIdentificacao.sortearNome(), 1));
+            espaco.setOrganismo(new Organismo(espaco, SorteadorIdentificacao.sortearNome(), 1, VisualizacaoUtils.CorAleatoria()));
             adicionarOrganismo(espaco);
         }
     }

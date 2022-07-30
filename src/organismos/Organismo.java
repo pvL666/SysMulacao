@@ -1,6 +1,7 @@
 package organismos;
 
 import ambiente.Espaco;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import utils.ConstantesGerais;
@@ -13,9 +14,13 @@ import utils.MathUtils;
 public class Organismo {
 
     private String identificacao;
+    private Color cor;
+    
+    private Espaco espaco;
+    
     private Integer distanciaMovimento;
     private List<Espaco> movimentosDisponiveis = new ArrayList<>();
-    private Espaco espaco;
+    
 
     public Organismo(Espaco espaco) {
         this.espaco = espaco;
@@ -29,6 +34,11 @@ public class Organismo {
     public Organismo(Espaco espaco, String identificacao, Integer distanciaMovimento) {
         this(espaco, identificacao);
         this.distanciaMovimento = distanciaMovimento;
+    }
+    
+    public Organismo(Espaco espaco, String identificacao, Integer distanciaMovimento, Color cor) {
+        this(espaco, identificacao, distanciaMovimento);
+        this.cor = cor;
     }
 
     public void iterar() {
@@ -80,4 +90,12 @@ public class Organismo {
         this.movimentosDisponiveis = movimentosDisponiveis;
     }
 
+    public Color getCor() {
+        return cor;
+    }
+
+    public void setCor(Color cor) {
+        this.cor = cor;
+    }
+    
 }
