@@ -4,7 +4,7 @@ package utils;
  *
  * @author pvL
  */
-public class ConstantesGerais {
+public abstract class ConstantesGerais {
     
     final public static double CHANCE_NASCER_ORGANISMO = 0.04;
     final public static double CHANCE_DE_MOVIMENTO = 1;

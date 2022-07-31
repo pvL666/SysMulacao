@@ -5,27 +5,30 @@ import ambiente.Ambiente;
 import ambiente.Espaco;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import organismos.Organismo;
 import visualizacao.PanelAmbiente;
+import visualizacao.PanelPropriedadesOrganismo;
 
 public class Mouse implements MouseListener {
 
-    private Ambiente ambiente;
+    private final Ambiente ambiente;
+    private final PanelAmbiente painelAmbiente;
+    private final PanelPropriedadesOrganismo panelPropriedades;
     
-    public Mouse(Ambiente ambiente) {
+    public Mouse(Ambiente ambiente, PanelAmbiente painelAmbiente, PanelPropriedadesOrganismo panelPropriedades) {
         this.ambiente = ambiente;
+        this.painelAmbiente = painelAmbiente;
+        this.panelPropriedades = panelPropriedades;
     }
     
     @Override
     public void mouseClicked(MouseEvent e) {
-        PanelAmbiente painelAmbiente = (PanelAmbiente) e.getSource();
         Espaco espacoClicado = 
                 getEspacoClicado(e.getX(), e.getY(), painelAmbiente);
         
         if (espacoClicado.isVazio()) {
-            painelAmbiente.setOrganismoSelecionado(null);
+            panelPropriedades.setOrganismoSelecionado(null);
         } else {
-            painelAmbiente.setOrganismoSelecionado(espacoClicado.getOrganismo());
+            panelPropriedades.setOrganismoSelecionado(espacoClicado.getOrganismo());
         }
     }
 
